@@ -275,14 +275,14 @@ window.onload = function() {
 	lpTag.newPage(CurrentLocation, {section: "unAuth"});
     document.getElementById("mySubmit").onclick = function load() {
 	    authenticate();
-	    $('.mySmallInput input').val("");
-	    $('.pass input').val("");
+	    $('input[name="Username"]').val('')
+	    $('input[name="paswd"]').val('')
         //validation code to see State field is mandatory.  
     }
     document.getElementById("Cancel").onclick = function load() {
 	    document.getElementById('id01').style.display='none';
-	    $('.mySmallInput input').val("");
-	    $('.pass input').val("");
+	    $('input[name="Username"]').val('')
+	    $('input[name="paswd"]').val('')
         //validation code to see State field is mandatory.  
     }
     document.getElementById("myLogin").onclick = function load() {
@@ -290,8 +290,8 @@ window.onload = function() {
         //validation code to see State field is mandatory.  
     }
     document.getElementById("myLogOut").onclick = function load() {
-	    $('.mySmallInput input').val("");
-	    $('.pass input').val("");
+	    $('input[name="Username"]').val('')
+	    $('input[name="paswd"]').val('')
 	    window.location.reload();
         //validation code to see State field is mandatory.  
     }
