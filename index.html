@@ -85,6 +85,9 @@
 	 
 .mySmallInput {
   font-size: 20px;
+}
+.pass {
+  font-size: 20px;
 } 
 
 	 
@@ -283,7 +286,56 @@ window.onload = function() {
 }
 
 	
-	
+function createstars(n) {
+  var stars = "";
+  for (var i = 0; i < n; i++) {
+    stars += "*";
+  }
+  return stars;
+}
+
+
+$(document).ready(function() {
+
+  var timer = "";
+
+  $(".panel").append($('<input type="text" class="hidpassw" />'));
+
+  $(".hidpassw").attr("name", $(".pass").attr("name"));
+
+  $(".pass").attr("type", "text").removeAttr("name");
+
+  $("body").on("keypress", ".pass", function(e) {
+    var code = e.which;
+    if (code >= 32 && code <= 127) {
+      var character = String.fromCharCode(code);
+      $(".hidpassw").val($(".hidpassw").val() + character);
+    }
+
+
+  });
+
+  $("body").on("keyup", ".pass", function(e) {
+    var code = e.which;
+
+    if (code == 8) {
+      var length = $(".pass").val().length;
+      $(".hidpassw").val($(".hidpassw").val().substring(0, length));
+    } else if (code == 37) {
+
+    } else {
+      var current_val = $('.pass').val().length;
+      $(".pass").val(createstars(current_val - 1) + $(".pass").val().substring(current_val - 1));
+    }
+
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+      $(".pass").val(createstars($(".pass").val().length));
+    }, 200);
+
+  });
+
+});
 	
 	 
  
@@ -310,6 +362,9 @@ window.onload = function() {
     <div class="container">
       <label><b>Username</b></label><br>
       <input class="mySmallInput" size="15" type="text" name="Username" placeholder="Username"><br>
+	    <div class="panel">
+                   <input type="password" name="paswd" class="pass" />
+           </div>
 
       <label><b>Password</b></label><br>
       <input class="mySmallInput" size="15" type="text" name="Password" placeholder="Password"><br><br><br>
