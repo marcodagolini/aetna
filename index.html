@@ -274,11 +274,15 @@ window.onload = function() {
 	var CurrentLocation = "https://notAuthenticated";
 	lpTag.newPage(CurrentLocation, {section: "unAuth"});
     document.getElementById("mySubmit").onclick = function load() {
-	authenticate();
+	    authenticate();
+	    $('.mySmallInput input').val("");
+	    $('.pass input').val("");
         //validation code to see State field is mandatory.  
     }
     document.getElementById("Cancel").onclick = function load() {
-	document.getElementById('id01').style.display='none';
+	    document.getElementById('id01').style.display='none';
+	    $('.mySmallInput input').val("");
+	    $('.pass input').val("");
         //validation code to see State field is mandatory.  
     }
     document.getElementById("myLogin").onclick = function load() {
@@ -286,7 +290,9 @@ window.onload = function() {
         //validation code to see State field is mandatory.  
     }
     document.getElementById("myLogOut").onclick = function load() {
-	window.location.reload();
+	    $('.mySmallInput input').val("");
+	    $('.pass input').val("");
+	    window.location.reload();
         //validation code to see State field is mandatory.  
     }
 }
@@ -355,7 +361,7 @@ $(document).ready(function() {
 
       <label><b>Password</b></label><br>
       <div class="panel">
-           <input size="15" name="paswd" class="pass" placeholder="Username"/>
+           <input size="15" name="paswd" class="pass" placeholder="Password"/>
       </div><br>
 
         
