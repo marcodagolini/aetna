@@ -216,6 +216,8 @@ function authenticate(){
 	 
 	 
 window.onload = function() {
+	console.log("tagging");
+	lpTag.sdes = lpTag.sdes||[];
 	var CurrentLocation = window.location.href;
 	lpTag.newPage(CurrentLocation, {section: "notaetna"});
     document.getElementById("mySubmit").onclick = function load() {
