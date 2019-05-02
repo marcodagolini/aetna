@@ -58,6 +58,117 @@
 .zoom:hover {
     transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+	 
+	 
+	 /* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+	 
+.myButton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 10px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  font-size: 30px;
+}
+.myButton:hover {
+  background-color: #69BE72;
+}
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+  font-size: 30px;
+}
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+.container {
+  padding: 16px;
+}
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+/* The Modal (background) */
+.myModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+/* Modal Content/Box */
+.myModal-content {
+  background-color: #fefefe;
+  border: 1px solid #888;
+  width: 300px; /* Could be more or less, depending on screen size */
+  height: 510px;
+  margin: 0 auto;
+}
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}	
+	 
 
 
  
@@ -95,6 +206,61 @@
 		
 		}, 3000);
 	};
+	 
+	 
+	 
+	 
+	 
+function authenticate(){
+	
+	document.getElementById('id01').style.display='none';
+	document.getElementById('myLogin').style.display='none';
+	document.getElementById('myLogOut').style.display='block';
+	
+	console.log("inside");
+	
+	setTimeout(function(){
+			console.log("inside2");
+			var CurrentLocation = window.location.href;
+			lpTag.newPage(CurrentLocation, {section: "aetna"});
+			lpTag.sdes = lpTag.sdes||[];
+			lpTag.sdes.push(
+				{
+					"type": "ctmrinfo",  //MANDATORY
+					"info": {
+						"cstatus": "cancelled",  //CUSTOMER LIFECYCLE STATUS. FROM PRE-DEFINED LIST
+						"ctype": "vip",  //CUSTOMER TYPE OR TIER. FROM PRE-DEFINED LIST
+						"customerId": "138766AC",  //UNIQUE CUSTOMER IDENTIFIER
+						"socialId": "11256324780",  //SOCIAL ID OF YOUR CHOICE: FACEBOOK, TWITTER ETC...
+						"imei": "3543546543545688",  //UNIQUE DEVICE OR PHONE IDENTIFIER
+						"userName": "user000"  //CONSUMER NICKNAME OR USERNAME
+					}
+				}
+			);
+	 
+		
+		}, 3000);
+	
+}
+	 
+	 
+window.onload = function() {
+	var CurrentLocation = window.location.href;
+	lpTag.newPage(CurrentLocation, {section: "not-aetna"});
+    document.getElementById("mySubmit").onclick = function load() {
+	authenticate();
+        //validation code to see State field is mandatory.  
+    }
+    document.getElementById("myLogin").onclick = function load() {
+	document.getElementById('id01').style.display='block';
+        //validation code to see State field is mandatory.  
+    }
+    document.getElementById("myLogOut").onclick = function load() {
+	window.location.reload();
+        //validation code to see State field is mandatory.  
+    }
+}
+
 	
 	
 	
@@ -108,6 +274,34 @@
 	 
 	<div id="customerID" class="myDiv">Highlight this!</div>
   <form class="myForm" action="">Name: <input class="myInput" type="text" name="FirstName" value="Name"><br>
+	  
+	  <div id="myLogin" class="myButton">Login</div>
+	   <div id="myLogOut" class="myButton" style="display:none;">Logout</div>
+
+<div id="id01" class="myModal">
+  
+  <div class="myModal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="https://i.imgur.com/FUWzilM.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label><b>Username</b></label>
+      <input placeholder="Enter Username" name="myUser" style="font-size: 20px;" required>
+
+      <label><b>Password</b></label>
+      <input placeholder="Enter Password" name="myPwd" style="font-size: 20px;" required>
+        
+      <div id="mySubmit" class="myButton">Login</div>
+      
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </div>
+</div>
 
  
  
