@@ -264,6 +264,10 @@ window.onload = function() {
 	authenticate();
         //validation code to see State field is mandatory.  
     }
+    document.getElementById("Cancel").onclick = function load() {
+	document.getElementById('id01').style.display='none';
+        //validation code to see State field is mandatory.  
+    }
     document.getElementById("myLogin").onclick = function load() {
 	document.getElementById('id01').style.display='block';
         //validation code to see State field is mandatory.  
@@ -304,10 +308,10 @@ window.onload = function() {
       <input class="mySmallInput" size="15" type="text" name="Username" value="Username"><br>
 
       <label><b>Password</b></label><br>
-      <input class="mySmallInput" size="15" type="text" name="Password" value="Password"><br>
+      <input class="mySmallInput" size="15" type="text" name="Password" value="Password"><br><br><br>
         
       <div id="mySubmit" class="myButton">Login</div>
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <div id="Cancel" class="cancelbtn">Cancel</div>
 
       
     </div>
