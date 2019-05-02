@@ -181,34 +181,7 @@ span.psw {
  	
  <script>
 	
-	
-	window.onload = function() {
-
-		setTimeout(function(){
-			console.log("inside2");
-			var CurrentLocation = window.location.href;
-			lpTag.newPage(CurrentLocation, {section: "aetna"});
-			lpTag.sdes = lpTag.sdes||[];
-			lpTag.sdes.push(
-				{
-					"type": "ctmrinfo",  //MANDATORY
-					"info": {
-						"cstatus": "cancelled",  //CUSTOMER LIFECYCLE STATUS. FROM PRE-DEFINED LIST
-						"ctype": "vip",  //CUSTOMER TYPE OR TIER. FROM PRE-DEFINED LIST
-						"customerId": "138766AC",  //UNIQUE CUSTOMER IDENTIFIER
-						"socialId": "11256324780",  //SOCIAL ID OF YOUR CHOICE: FACEBOOK, TWITTER ETC...
-						"imei": "3543546543545688",  //UNIQUE DEVICE OR PHONE IDENTIFIER
-						"userName": "user000"  //CONSUMER NICKNAME OR USERNAME
-					}
-				}
-			);
-	 
-		
-		}, 3000);
-	};
-	 
-	 
-	 
+ 
 	 
 	 
 function authenticate(){
