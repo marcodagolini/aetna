@@ -38,8 +38,16 @@
   left: 20px;
 }
 .myInput {
-  font-size: 20px;
-  width: 200px;
+  font-size: 30px;
+  position: absolute;
+  top: 110px;
+  left: 50px;
+} 
+.Name {
+  font-size: 30px;
+  position: absolute;
+  top: 110px;
+  left: 20px;
 } 
 .myForm {
   font-size: 30px;
@@ -247,8 +255,7 @@ window.onload = function() {
 	  
 	 
 	<div id="customerID" class="myDiv">Highlight this!</div><br>
-	 <label><b>Name: </b></label></br>   
-  <form class="myForm" action="">Name: <input class="myInput" type="text" name="FirstName" value="Name"><br>
+	 <div id="Name" class="Name">Name: </div> <input class="myInput" type="text" name="FirstName" value="Name">
 	  
 	  <div id="myLogin" class="myButton">Login</div>
 	   <div id="myLogOut" class="myButton" style="display:none;">Logout</div>
